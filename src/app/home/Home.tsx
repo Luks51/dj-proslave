@@ -54,42 +54,42 @@ const allServicesData = [
     id: 1,
     title: 'DJ za Proslave',
     desc: 'Učinite svoju proslavu nezaboravnom uz naše talentirane DJ-eve, prilagođene glazbene setove i energičnu atmosferu.',
-    link: '/dj-za-proslave',
+    link: '/dj-za-proslave/',
     video: privatePartiesVideo
   },
   {
     id: 2,
     title: 'DJ za Evente',
     desc: 'Za bitne ceremonije i događaje osiguravamo širok glazbeni spektar i atmosferu koja podiže svaki event na višu razinu.',
-    link: '/dj-za-korporativni-dogadaj',
+    link: '/dj-za-korporativni-dogadaj/',
     video: eventsVideo
   },
   {
     id: 3,
     title: 'DJ za Svadbe',
     desc: 'Dodajte dašak magije Vašem vjenčanju. Profesionalna glazbena kulisa za noć ispunjenu plesom i nezaboravnim trenucima.',
-    link: '/dj-za-vjencanja',
+    link: '/dj-za-vjencanja/',
     video: weddingsVideo
   },
   {
     id: 4,
     title: 'DJ + violina',
     desc: 'Elegancija klasičnog instrumenta uz moderne ritmove. Savršena kombinacija za profinjenu atmosferu i doček gostiju.',
-    link: '/usluge',
+    link: '/usluge/',
     video: weddingsVideo
   },
   {
     id: 5,
     title: 'DJ + saksofon',
     desc: 'Dodajte live energiju saksofona. Ovaj spoj stvara vrhunski klupski ili lounge ugođaj koji će gosti obožavati.',
-    link: '/usluge',
+    link: '/usluge/',
     video: eventsVideo
   },
   {
     id: 6,
     title: 'DJ + harmonika',
     desc: 'Idealan odabir za zagrijavanje atmosfere na svadbama i tradicionalnim proslavama. Spoj modernog i onog domaćeg.',
-    link: '/usluge',
+    link: '/usluge/',
     video: privatePartiesVideo
   }
 ];
@@ -243,7 +243,7 @@ function Home() {
               className='flex flex-col sm:flex-row gap-4 sm:gap-6 mt-2'
             >
               <Link
-                to='/kontakt'
+                to='/kontakt/'
                 onClick={() => window.scrollTo(0, 0)}
                 className='relative overflow-hidden px-8 h-12 md:h-14 inline-flex items-center justify-center bg-gradient-to-r from-[color:var(--color-accent-gold)] to-[#ffdf73] text-black font-bold uppercase tracking-widest text-sm hover:scale-[1.03] transition-all duration-300 shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:shadow-[0_0_40px_rgba(212,175,55,0.7)] leading-none pt-1 group'
               >
@@ -252,7 +252,7 @@ function Home() {
                 <span className='absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-25deg] animate-button-shimmer pointer-events-none'></span>
               </Link>
               <Link
-                to='/o-nama'
+                to='/o-nama/'
                 onClick={() => window.scrollTo(0, 0)}
                 className='px-8 h-12 md:h-14 inline-flex items-center justify-center bg-transparent border border-white/30 text-white font-bold uppercase tracking-widest text-sm hover:bg-white/10 hover:border-white transition-colors backdrop-blur-sm leading-none pt-1'
               >
@@ -306,8 +306,11 @@ function Home() {
             className='w-full max-w-5xl rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(194,167,90,0.15)] border border-white/20 relative z-20 bg-black'
           >
             {/* Live oznaka u kutu videa */}
-            <div className='absolute top-4 left-4 z-30 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-white text-xs font-semibold tracking-wider uppercase'>
-              <span className='w-2 h-2 rounded-full bg-red-500 animate-ping'></span>
+            <div className='absolute top-4 left-4 z-30 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-[color:var(--color-accent-gold)]/30 text-white text-xs font-semibold tracking-wider uppercase shadow-[0_0_15px_rgba(0,0,0,0.5)]'>
+              <span className='relative flex h-2 w-2'>
+                <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--color-accent-gold)] opacity-75'></span>
+                <span className='relative inline-flex rounded-full h-2 w-2 bg-[color:var(--color-accent-gold)]'></span>
+              </span>
               <span>Uživo s podija</span>
             </div>
 
@@ -329,7 +332,7 @@ function Home() {
             className='mt-12 md:mt-16'
           >
             <Link
-              to='/galerija'
+              to='/galerija/'
               onClick={() => window.scrollTo(0, 0)}
               className='px-8 h-12 md:h-14 inline-flex items-center justify-center bg-[color:var(--color-accent-gold)] text-black font-bold uppercase tracking-widest text-sm hover:bg-[#ffdf73] transition-colors shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] leading-none pt-1 gap-4 group'
             >
@@ -398,7 +401,7 @@ function Home() {
           </div>
 
           <div className='mt-16 md:mt-24 flex justify-center'>
-            <Link to='/usluge' onClick={() => window.scrollTo(0, 0)} className='inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-500 uppercase tracking-widest text-xs font-bold group shadow-lg'>
+            <Link to='/usluge/' onClick={() => window.scrollTo(0, 0)} className='inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-500 uppercase tracking-widest text-xs font-bold group shadow-lg'>
               Pregledajte sve usluge
               <FontAwesomeIcon icon={faChevronRight} className='transition-transform duration-500 group-hover:translate-x-1.5' />
             </Link>
@@ -577,7 +580,7 @@ function Home() {
               </div>
 
               <div className="mt-12">
-                <Link to='/o-nama' onClick={() => window.scrollTo(0, 0)} className='inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-500 uppercase tracking-widest text-xs font-bold group shadow-lg'>
+                <Link to='/o-nama/' onClick={() => window.scrollTo(0, 0)} className='inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-500 uppercase tracking-widest text-xs font-bold group shadow-lg'>
                   Upoznajte nas
                   <FontAwesomeIcon icon={faChevronRight} className='transition-transform duration-500 group-hover:translate-x-1.5' />
                 </Link>
@@ -653,7 +656,7 @@ function Home() {
                 Rezervirajte termin
               </a>
               <Link
-                to='/kontakt'
+                to='/kontakt/'
                 onClick={() => window.scrollTo(0, 0)}
                 className='px-10 py-4 rounded-full border border-white/20 text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 w-full sm:w-auto text-center'
               >

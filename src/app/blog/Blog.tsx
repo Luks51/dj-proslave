@@ -112,7 +112,7 @@ function Blog() {
               variants={itemVariants}
               className="group bg-[#1e1e1e]/50 backdrop-blur-sm border border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-500 shadow-xl hover:shadow-[0_20px_40px_rgba(255,223,115,0.1)] flex flex-col h-full"
             >
-              <Link to={`/blog/${post.id}`} className="block relative overflow-hidden h-[250px]">
+              <Link to={`/blog/${post.id}/`} className="block relative overflow-hidden h-[250px]">
                 <img
                   src={post.image}
                   alt={post.title}
@@ -130,7 +130,7 @@ function Blog() {
                 </div>
 
                 <h2 className="text-2xl font-bold mb-4 line-clamp-2 group-hover:text-[color:var(--color-accent-gold)] transition-colors">
-                  <Link to={`/blog/${post.id}`}>{post.title}</Link>
+                  <Link to={`/blog/${post.id}/`}>{post.title}</Link>
                 </h2>
 
                 <p className="text-gray-400 mb-8 line-clamp-3 flex-grow">
@@ -138,7 +138,7 @@ function Blog() {
                 </p>
 
                 <Link
-                  to={`/blog/${post.id}`}
+                  to={`/blog/${post.id}/`}
                   className="inline-flex items-center gap-2 text-white font-bold tracking-widest uppercase text-xs hover:text-[color:var(--color-accent-gold)] transition-colors mt-auto w-fit"
                 >
                   <span>Pročitaj više</span>

@@ -1,10 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import './CelebrationDJ.scss';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import djProslaveImg from '../../assets/images/dj-proslave.webp'
+import heroCelebrationImg from '../../assets/images/hero-celebration-dj.jpg';
 import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faGlassCheers, faMusic, faBolt, faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faArrowRight, 
+  faGlassCheers, 
+  faMusic, 
+  faBolt, 
+  faVolumeHigh,
+  faStar,
+  faPhone,
+  faLocationDot,
+  faClock
+} from '@fortawesome/free-solid-svg-icons';
 import { getSeoMeta } from '../utils/seo';
 import {
   FloatingEdgeVinyl,
@@ -60,15 +70,19 @@ function CelebrationDJ() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} 
       />
       {/* 1. HERO BANNER - PROSLAVE */}
-      <section ref={heroRef} className='relative pt-40 pb-20 md:pt-52 md:pb-32 flex flex-col items-center justify-center overflow-hidden border-b border-white/5'>
+      <section ref={heroRef} className='relative pt-36 pb-16 md:pt-48 md:pb-24 flex flex-col items-center justify-center overflow-hidden border-b border-white/10'>
         {/* Pozadinska slika s gradijentom */}
         <motion.div 
           style={{ y: heroY, opacity: heroOpacity }}
           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity" style={{ backgroundImage: `url(${djProslaveImg})` }}></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/80 via-[#050508]/60 to-[#050508]"></div>
-          <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#d4af37] opacity-[0.05] blur-[150px] rounded-full'></div>
+          <div 
+            className="absolute inset-0 bg-cover bg-center md:bg-[center_30%]" 
+            style={{ backgroundImage: `url(${heroCelebrationImg})` }}
+          />
+          {/* Subtle multi-stop dark gradient overlay for optimal text contrast and mood */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/85 via-[#050508]/75 to-[#050508]" />
+          <div className='absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[color:var(--color-accent-gold)] opacity-[0.09] blur-[160px] rounded-full pointer-events-none' />
         </motion.div>
 
         {/* In-section floating edge DJ elements */}
@@ -83,18 +97,165 @@ function CelebrationDJ() {
         </div>
         
         <div className="container relative z-10 px-4">
-          <div className="max-w-5xl mx-auto">
-            <h4 className='text-[#d4af37] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-6 flex items-center gap-4'>
-              <span className="w-12 h-px bg-[#d4af37]"></span>
-              Privatne Proslave
-            </h4>
-            <h1 className='text-5xl md:text-7xl lg:text-8xl font-light tracking-wide text-white drop-shadow-2xl mb-8 leading-tight'>
-              Ritmovi koji <br className="hidden md:block"/>
-              <span className='font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#ffdf73]'>pokreću svaku proslavu.</span>
-            </h1>
-            <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed">
-              Planirate li rođendan, godišnjicu ili intimno okupljanje? Donosimo vrhunsku energiju i atmosferu koja se pamti, prilagođenu isključivo Vašem ukusu.
-            </p>
+          <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
+            
+            {/* Top Performance Social Proof Pill */}
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/50 border border-white/10 backdrop-blur-md mb-6 shadow-[0_4px_25px_rgba(0,0,0,0.5)]"
+            >
+              <div className="flex text-[color:var(--color-accent-gold)] text-xs gap-0.5">
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+              </div>
+              <span className="text-gray-200 text-xs sm:text-sm font-medium">
+                400+ odrađenih proslava
+              </span>
+            </motion.div>
+
+            {/* Main Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className='text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white drop-shadow-2xl mb-6 leading-[1.1]'
+            >
+              DJ za Proslave i Rođendane <br />
+              <span className='italic font-serif font-normal text-transparent bg-clip-text bg-gradient-to-r from-[color:var(--color-accent-gold)] via-[#fff1b8] to-[color:var(--color-accent-gold)]'>
+                Hrvatska & Zagreb
+              </span>
+            </motion.h1>
+
+            {/* Subtitle Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-gray-300 text-base sm:text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed mb-6"
+            >
+              Profesionalni DJ za rođendane, godišnjice, punoljetnosti i privatne zabave s više od 15 godina iskustva i 400+ proslava diljem Hrvatske — kreiramo nezaboravnu atmosferu i klupski party ritam.
+            </motion.p>
+
+            {/* Features / Service Tags */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto mb-8"
+            >
+              {[
+                'Personalizirani repertoar',
+                'Klub & party rasvjeta',
+                'Vrhunsko ozvučenje',
+                'Saksofon uživo',
+                'Harmonika show',
+                'Interaktivni nastup',
+                'Bez limita trajanja',
+                'Bežični mikrofoni'
+              ].map((tag, idx) => (
+                <span
+                  key={idx}
+                  className="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-gray-300 text-xs sm:text-sm font-medium backdrop-blur-sm hover:border-[color:var(--color-accent-gold)]/40 transition-colors"
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center gap-4 mb-8 w-full sm:w-auto"
+            >
+              <Link
+                to='/kontakt/'
+                onClick={() => window.scrollTo(0, 0)}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[color:var(--color-accent-gold)] via-[#f7e096] to-[color:var(--color-accent-gold)] text-black font-extrabold uppercase tracking-wider text-xs sm:text-sm rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(194,167,90,0.35)]"
+              >
+                Zatražite ponudu
+                <FontAwesomeIcon icon={faArrowRight} className="text-xs" />
+              </Link>
+              <a
+                href="tel:+3850989582676"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-black/40 hover:bg-white/10 border border-white/20 hover:border-[color:var(--color-accent-gold)]/50 text-white font-bold uppercase tracking-wider text-xs sm:text-sm backdrop-blur-md transition-all duration-300"
+              >
+                <FontAwesomeIcon icon={faPhone} className="text-[color:var(--color-accent-gold)]" />
+                Nazovite nas
+              </a>
+            </motion.div>
+
+            {/* Quick Trust Badges */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs sm:text-sm text-gray-300 mb-12"
+            >
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faLocationDot} className="text-[color:var(--color-accent-gold)]" />
+                <span>Cijela Hrvatska</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faStar} className="text-[color:var(--color-accent-gold)]" />
+                <span>400+ proslava</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faClock} className="text-[color:var(--color-accent-gold)]" />
+                <span>15+ godina iskustva</span>
+              </div>
+            </motion.div>
+
+            {/* Bottom Stats Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="w-full max-w-4xl grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-10 border-t border-white/10"
+            >
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm flex flex-col items-center">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-1">
+                  400+
+                </span>
+                <span className="text-xs uppercase tracking-wider text-gray-400 font-medium text-center">
+                  Proslava i tuluma
+                </span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm flex flex-col items-center">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-1">
+                  15+
+                </span>
+                <span className="text-xs uppercase tracking-wider text-gray-400 font-medium text-center">
+                  Godina iskustva
+                </span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm flex flex-col items-center">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[color:var(--color-accent-gold)] tracking-tight mb-1">
+                  5.0
+                </span>
+                <span className="text-xs uppercase tracking-wider text-gray-400 font-medium text-center">
+                  Prosječna ocjena
+                </span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm flex flex-col items-center">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-1">
+                  100%
+                </span>
+                <span className="text-xs uppercase tracking-wider text-gray-400 font-medium text-center">
+                  Rasplesanih gostiju
+                </span>
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
@@ -112,10 +273,10 @@ function CelebrationDJ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="bg-[#111111] p-10 rounded-3xl border border-white/5 hover:border-[#d4af37]/30 transition-colors duration-500 group shadow-2xl flex flex-col"
+              className="bg-[#111111] p-10 rounded-3xl border border-white/5 hover:border-[color:var(--color-accent-gold)]/30 transition-colors duration-500 group shadow-2xl flex flex-col"
             >
-              <div className="w-14 h-14 rounded-full bg-[#d4af37]/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <FontAwesomeIcon icon={faMusic} className="text-[#d4af37] text-xl" />
+              <div className="w-14 h-14 rounded-full bg-[color:var(--color-accent-gold)]/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <FontAwesomeIcon icon={faMusic} className="text-[color:var(--color-accent-gold)] text-xl" />
               </div>
               <h3 className="text-2xl font-medium text-white mb-4">Savršen Odabir Glazbe</h3>
               <p className="text-gray-400 font-light leading-relaxed mb-0 mt-auto">
@@ -129,10 +290,10 @@ function CelebrationDJ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-              className="bg-[#111111] p-10 rounded-3xl border border-white/5 hover:border-[#d4af37]/30 transition-colors duration-500 group shadow-2xl flex flex-col"
+              className="bg-[#111111] p-10 rounded-3xl border border-white/5 hover:border-[color:var(--color-accent-gold)]/30 transition-colors duration-500 group shadow-2xl flex flex-col"
             >
-              <div className="w-14 h-14 rounded-full bg-[#d4af37]/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                <FontAwesomeIcon icon={faBolt} className="text-[#d4af37] text-xl" />
+              <div className="w-14 h-14 rounded-full bg-[color:var(--color-accent-gold)]/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <FontAwesomeIcon icon={faBolt} className="text-[color:var(--color-accent-gold)] text-xl" />
               </div>
               <h3 className="text-2xl font-medium text-white mb-4">Nevjerojatna Energija</h3>
               <p className="text-gray-400 font-light leading-relaxed mb-0 mt-auto">
@@ -146,11 +307,11 @@ function CelebrationDJ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="bg-gradient-to-br from-[#161616] to-[#0a0a0a] p-10 rounded-3xl border border-[#d4af37]/20 hover:border-[#d4af37]/50 transition-colors duration-500 group shadow-2xl flex flex-col relative overflow-hidden"
+              className="bg-gradient-to-br from-[#161616] to-[#0a0a0a] p-10 rounded-3xl border border-[color:var(--color-accent-gold)]/20 hover:border-[color:var(--color-accent-gold)]/50 transition-colors duration-500 group shadow-2xl flex flex-col relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#d4af37]/10 blur-2xl rounded-full"></div>
-              <div className="w-14 h-14 rounded-full bg-[#d4af37]/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 relative z-10">
-                <FontAwesomeIcon icon={faVolumeHigh} className="text-[#d4af37] text-xl" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[color:var(--color-accent-gold)]/10 blur-2xl rounded-full"></div>
+              <div className="w-14 h-14 rounded-full bg-[color:var(--color-accent-gold)]/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 relative z-10">
+                <FontAwesomeIcon icon={faVolumeHigh} className="text-[color:var(--color-accent-gold)] text-xl" />
               </div>
               <h3 className="text-2xl font-medium text-white mb-4 relative z-10">Premium Oprema</h3>
               <p className="text-gray-300 font-light leading-relaxed mb-0 mt-auto relative z-10">
@@ -170,8 +331,8 @@ function CelebrationDJ() {
           <div className="flex flex-col md:flex-row items-center gap-16 md:gap-24">
             
             <div className="w-full md:w-1/3 text-center md:text-left">
-              <FontAwesomeIcon icon={faGlassCheers} className="text-[#d4af37] text-4xl mb-6 opacity-80" />
-              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Što sve <br/><span className="font-semibold text-[#d4af37]">slavimo?</span></h2>
+              <FontAwesomeIcon icon={faGlassCheers} className="text-[color:var(--color-accent-gold)] text-4xl mb-6 opacity-80" />
+              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Što sve <br/><span className="font-semibold text-[color:var(--color-accent-gold)]">slavimo?</span></h2>
               <p className="text-gray-400 font-light">
                 Od najmanjih privatnih proslava do ogromnih zabava za stotine uzvanika – tu smo za Vas.
               </p>
@@ -204,7 +365,7 @@ function CelebrationDJ() {
       <section className="py-32 relative overflow-hidden text-center">
         {/* Climax Celebration Energy Aura & Pyro Sparkles */}
         <CelebrationPartySparkles />
-        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-[#d4af37] opacity-[0.08] blur-[120px] rounded-full z-0 pointer-events-none'></div>
+        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-[color:var(--color-accent-gold)] opacity-[0.08] blur-[120px] rounded-full z-0 pointer-events-none'></div>
         
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -215,12 +376,12 @@ function CelebrationDJ() {
         >
           <div className="max-w-4xl mx-auto border border-white/10 bg-white/5 backdrop-blur-xl p-12 md:p-20 rounded-[3rem] shadow-2xl">
             <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
-              Spremni za <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#ffdf73]">zabavu?</span>
+              Spremni za <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[color:var(--color-accent-gold)] to-[#ffdf73]">zabavu?</span>
             </h2>
             <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto font-light">
               Dopustite nam da vašu proslavu podignemo na novu razinu. Zatražite termin već danas i prepustite brigu o atmosferi nama.
             </p>
-            <Link to='/kontakt' onClick={() => window.scrollTo(0, 0)} className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-[#d4af37] to-[#ffdf73] text-black font-extrabold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(212,175,55,0.3)] rounded-full">
+            <Link to='/kontakt/' onClick={() => window.scrollTo(0, 0)} className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-[color:var(--color-accent-gold)] to-[#ffdf73] text-black font-extrabold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(194,167,90,0.3)] rounded-full">
               Rezervirajte Svoj Termin
               <FontAwesomeIcon icon={faArrowRight} />
             </Link>

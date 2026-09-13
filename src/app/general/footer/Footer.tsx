@@ -52,10 +52,10 @@ function Footer() {
                 Istraži
               </h5>
               <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/'>Početna</Link>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/o-nama'>O nama</Link>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/galerija'>Galerija</Link>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' to='/galerija#video'>Video</Link>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 text-sm' onClick={() => window.scrollTo(0, 0)} to='/blog'>Blog</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/o-nama/'>O nama</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/galerija/'>Galerija</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' to='/galerija/#video'>Video</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 text-sm' onClick={() => window.scrollTo(0, 0)} to='/blog/'>Blog</Link>
             </div>
 
             <div className='flex flex-col items-center md:items-start'>
@@ -63,9 +63,9 @@ function Footer() {
                 <span className='w-1.5 h-1.5 rounded-full bg-[color:var(--color-accent-gold)] shadow-[0_0_8px_rgba(255,223,115,0.8)]'></span>
                 Usluge
               </h5>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/dj-za-korporativni-dogadaj'>Eventi</Link>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/dj-za-proslave'>Proslave</Link>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 text-sm' onClick={() => window.scrollTo(0, 0)} to='/dj-za-vjencanja'>Vjenčanja</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/dj-za-korporativni-dogadaj/'>Eventi</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/dj-za-proslave/'>Proslave</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 text-sm' onClick={() => window.scrollTo(0, 0)} to='/dj-za-vjencanja/'>Vjenčanja</Link>
             </div>
 
             <div className='flex flex-col items-center md:items-start'>
@@ -73,9 +73,9 @@ function Footer() {
                 <span className='w-1.5 h-1.5 rounded-full bg-[color:var(--color-accent-gold)] shadow-[0_0_8px_rgba(255,223,115,0.8)]'></span>
                 Više
               </h5>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/kontakt'>Kontakt</Link>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/usluge'>Sve Usluge</Link>
-              <Link className='text-gray-400 hover:text-white transition-colors duration-300 text-sm' to='/kontakt#cesta-pitanja'>Česta Pitanja (FAQ)</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/kontakt/'>Kontakt</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 mb-3 text-sm' onClick={() => window.scrollTo(0, 0)} to='/usluge/'>Sve Usluge</Link>
+              <Link className='text-gray-400 hover:text-white transition-colors duration-300 text-sm' to='/kontakt/#cesta-pitanja'>Česta Pitanja (FAQ)</Link>
             </div>
           </div>
 
@@ -87,9 +87,9 @@ function Footer() {
             Copyright &copy; {currentYear}. Sva prava pridržana <span className='text-gray-400'>DJ Proslave</span>
           </p>
           <div className='flex gap-4 text-[11px] text-gray-600 uppercase tracking-widest font-medium'>
-            <Link to="/uvjeti-koristenja" onClick={() => window.scrollTo(0, 0)} className='cursor-pointer hover:text-gray-300 transition-colors'>Uvjeti korištenja</Link>
+            <Link to="/uvjeti-koristenja/" onClick={() => window.scrollTo(0, 0)} className='cursor-pointer hover:text-gray-300 transition-colors'>Uvjeti korištenja</Link>
             <span className='hidden sm:inline text-gray-700'>|</span>
-            <Link to="/politika-privatnosti" onClick={() => window.scrollTo(0, 0)} className='cursor-pointer hover:text-gray-300 transition-colors'>Privatnost</Link>
+            <Link to="/politika-privatnosti/" onClick={() => window.scrollTo(0, 0)} className='cursor-pointer hover:text-gray-300 transition-colors'>Privatnost</Link>
           </div>
         </div>
       </div>

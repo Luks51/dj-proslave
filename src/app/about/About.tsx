@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import './About.scss';
 import aboutImg from '../../assets/images/dj-playing-music-mixer.webp'
 import aboutHeroImg from '../../assets/images/closeup-dj-working-blue-light.webp'
@@ -58,6 +59,26 @@ function About() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [selectedPerformerModal, setSelectedPerformerModal] = useState<typeof performersData[0] | null>(null);
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  // Close modal on Escape key and prevent background scroll
+  useEffect(() => {
+    if (!selectedPerformerModal) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedPerformerModal(null);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedPerformerModal]);
 
   const handleScrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -492,48 +513,52 @@ function About() {
         </div>
       </section>
 
-      {/* Performer Modal */}
-      <AnimatePresence>
-        {selectedPerformerModal && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className='fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md'
-            onClick={() => setSelectedPerformerModal(null)}
-          >
+      {/* Performer Modal (Rendered via Portal to document.body to avoid parent backdrop-filter/transform containing block) */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {selectedPerformerModal && (
             <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className='bg-[#0a0b10] border border-white/10 rounded-2xl overflow-hidden max-w-3xl w-full flex flex-col md:flex-row relative shadow-[0_30px_60px_rgba(0,0,0,0.5)]'
-              onClick={e => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className='fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md'
+              onClick={() => setSelectedPerformerModal(null)}
             >
-              <button 
-                onClick={() => setSelectedPerformerModal(null)}
-                className='absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-[color:var(--color-accent-gold)] text-white hover:text-black rounded-full flex items-center justify-center transition-colors'
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                className='bg-[#0a0b10] border border-white/10 rounded-2xl overflow-hidden max-w-3xl w-full flex flex-col md:flex-row relative shadow-[0_30px_60px_rgba(0,0,0,0.5)]'
+                onClick={e => e.stopPropagation()}
               >
-                <FontAwesomeIcon icon={faXmark} />
-              </button>
-              
-              <div className='w-full md:w-2/5 h-64 md:h-auto relative'>
-                <img src={performerImg} alt={selectedPerformerModal.name} className='w-full h-full object-cover' />
-                <div className='absolute inset-0 bg-gradient-to-t from-[#0a0b10] via-transparent to-transparent md:bg-gradient-to-r'></div>
-              </div>
-              
-              <div className='p-8 md:p-12 flex-1 flex flex-col justify-center'>
-                <div className='w-12 h-1 bg-[color:var(--color-accent-gold)] mb-6 rounded-full'></div>
-                <h3 className='text-3xl font-bold text-white mb-1'>{selectedPerformerModal.name}</h3>
-                <p className='text-[color:var(--color-accent-gold)] font-medium uppercase tracking-widest text-xs mb-6'>DJ Izvođač</p>
-                <p className='text-gray-300 leading-relaxed'>
-                  {selectedPerformerModal.fullDesc}
-                </p>
-              </div>
+                <button 
+                  onClick={() => setSelectedPerformerModal(null)}
+                  className='absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-[color:var(--color-accent-gold)] text-white hover:text-black rounded-full flex items-center justify-center transition-colors'
+                  aria-label="Zatvori"
+                >
+                  <FontAwesomeIcon icon={faXmark} />
+                </button>
+                
+                <div className='w-full md:w-2/5 h-64 md:h-auto relative'>
+                  <img src={performerImg} alt={selectedPerformerModal.name} className='w-full h-full object-cover' />
+                  <div className='absolute inset-0 bg-gradient-to-t from-[#0a0b10] via-transparent to-transparent md:bg-gradient-to-r'></div>
+                </div>
+                
+                <div className='p-8 md:p-12 flex-1 flex flex-col justify-center'>
+                  <div className='w-12 h-1 bg-[color:var(--color-accent-gold)] mb-6 rounded-full'></div>
+                  <h3 className='text-3xl font-bold text-white mb-1'>{selectedPerformerModal.name}</h3>
+                  <p className='text-[color:var(--color-accent-gold)] font-medium uppercase tracking-widest text-xs mb-6'>DJ Izvođač</p>
+                  <p className='text-gray-300 leading-relaxed'>
+                    {selectedPerformerModal.fullDesc}
+                  </p>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
       {/* 6. Full-width Solid Gold CTA */}
       <section className='py-24 md:py-32 bg-[#050508]/40 backdrop-blur-sm relative overflow-hidden'>
@@ -555,7 +580,7 @@ function About() {
             
             <div className='relative z-10 flex gap-4 w-full md:w-auto flex-col sm:flex-row'>
               <Link 
-                to='/kontakt'
+                to='/kontakt/'
                 onClick={() => window.scrollTo(0, 0)} 
                 className='px-10 py-5 bg-black text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-300 w-full sm:w-auto text-center flex items-center justify-center gap-4 group shadow-2xl'
               >

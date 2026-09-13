@@ -184,7 +184,7 @@ function TermsOfUse() {
               Obrada osobnih podataka (npr. podaci iz kontakt forme) te uporaba kolačića i analitike (npr. Google Analytics uz privolu) uređeni su zasebnim dokumentom: Politikom privatnosti.
             </Paragraph>
             <Paragraph>
-              Preporučujemo da prije korištenja kontakt forme pročitate <Link to="/politika-privatnosti" className="text-[color:var(--color-accent-gold)] hover:underline">Politiku privatnosti</Link>.
+              Preporučujemo da prije korištenja kontakt forme pročitate <Link to="/politika-privatnosti/" className="text-[color:var(--color-accent-gold)] hover:underline">Politiku privatnosti</Link>.
             </Paragraph>
           </Card>
 

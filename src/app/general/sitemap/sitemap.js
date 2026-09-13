@@ -2,14 +2,19 @@ const { SitemapStream, streamToPromise } = require('sitemap');
 const fs = require('fs');
 
 const links = [
-    { url: '/', changefreq: 'daily', priority: 1 },
-    { url: '/#/about', changefreq: 'monthly', priority: 0.8 },
-    { url: '/#/gallery', changefreq: 'monthly', priority: 0.5 },
-    { url: '/#/services', changefreq: 'monthly', priority: 0.8 },
-    { url: '/#/dj-za-evente', changefreq: 'daily', priority: 1 },
-    { url: '/#/dj-za-proslave', changefreq: 'daily', priority: 1 },
-    { url: '/#/dj-za-vjencanja', changefreq: 'daily', priority: 1 },
-    { url: '/#/contact', changefreq: 'monthly', priority: 0.5 },
+    { url: '/', changefreq: 'weekly', priority: 1 },
+    { url: '/o-nama/', changefreq: 'monthly', priority: 0.8 },
+    { url: '/usluge/', changefreq: 'monthly', priority: 0.8 },
+    { url: '/galerija/', changefreq: 'weekly', priority: 0.9 },
+    { url: '/kontakt/', changefreq: 'monthly', priority: 0.8 },
+    { url: '/dj-za-vjencanja/', changefreq: 'monthly', priority: 0.9 },
+    { url: '/dj-za-korporativni-dogadaj/', changefreq: 'monthly', priority: 0.9 },
+    { url: '/dj-za-proslave/', changefreq: 'monthly', priority: 0.9 },
+    { url: '/blog/', changefreq: 'weekly', priority: 0.8 },
+    { url: '/blog/kako-odabrati-dj-a-za-vjencanje/', changefreq: 'monthly', priority: 0.7 },
+    { url: '/blog/najbolja-glazba-za-evente/', changefreq: 'monthly', priority: 0.7 },
+    { url: '/politika-privatnosti/', changefreq: 'yearly', priority: 0.3 },
+    { url: '/uvjeti-koristenja/', changefreq: 'yearly', priority: 0.3 },
 ];
 
 const generateSitemap = async () => {

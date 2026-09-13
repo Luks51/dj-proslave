@@ -63,7 +63,7 @@ function Navbar() {
   }
 
   const CustomDropdownLink = () => {
-    let resolved = useResolvedPath('/services');
+    let resolved = useResolvedPath('/usluge/');
     let match = useMatch({ path: resolved.pathname, end: true });
 
     return (
@@ -75,16 +75,16 @@ function Navbar() {
             + (match ? 'text-black bg-gradient-to-r from-[color:var(--color-accent-gold)] to-[#ffdf73] shadow-[0_0_20px_rgba(255,223,115,0.4)]' : 'text-gray-400 hover:text-white hover:bg-white/10')
           }
           onClick={() => window.scrollTo(0, 0)}
-          to='/usluge'
+          to='/usluge/'
           title='Usluge'>
           Usluge
           <FontAwesomeIcon icon={faChevronDown} className="w-3 h-3 group-hover:rotate-180 transition-transform duration-300" />
         </NavLink>
         <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
           <div className="bg-[#1e1e1e]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col gap-1 min-w-[160px]">
-            <Link to="/dj-za-vjencanja" className="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors text-[11px] lg:text-xs font-bold tracking-widest uppercase text-center" onClick={() => window.scrollTo(0, 0)}>Vjenčanja</Link>
-            <Link to="/dj-za-proslave" className="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors text-[11px] lg:text-xs font-bold tracking-widest uppercase text-center" onClick={() => window.scrollTo(0, 0)}>Proslave</Link>
-            <Link to="/dj-za-korporativni-dogadaj" className="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors text-[11px] lg:text-xs font-bold tracking-widest uppercase text-center" onClick={() => window.scrollTo(0, 0)}>Eventi</Link>
+            <Link to="/dj-za-vjencanja/" className="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors text-[11px] lg:text-xs font-bold tracking-widest uppercase text-center" onClick={() => window.scrollTo(0, 0)}>Vjenčanja</Link>
+            <Link to="/dj-za-proslave/" className="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors text-[11px] lg:text-xs font-bold tracking-widest uppercase text-center" onClick={() => window.scrollTo(0, 0)}>Proslave</Link>
+            <Link to="/dj-za-korporativni-dogadaj/" className="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-3 rounded-xl transition-colors text-[11px] lg:text-xs font-bold tracking-widest uppercase text-center" onClick={() => window.scrollTo(0, 0)}>Eventi</Link>
           </div>
         </div>
       </li>
@@ -92,7 +92,7 @@ function Navbar() {
   }
 
   const CustomDropdownMobile = () => {
-    let resolved = useResolvedPath('/services');
+    let resolved = useResolvedPath('/usluge/');
     let match = useMatch({ path: resolved.pathname, end: true });
 
     return (
@@ -105,7 +105,7 @@ function Navbar() {
               + (match ? 'text-black bg-gradient-to-r from-[color:var(--color-accent-gold)] to-[#ffdf73] shadow-[0_10px_20px_rgba(255,223,115,0.2)]' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10')
             }
             onClick={() => { window.scrollTo(0, 0); closeMenu(); }}
-            to='/usluge'
+            to='/usluge/'
             title='Usluge'>
             <FontAwesomeIcon className='mr-4 w-5' icon={faHandshakeAngle} aria-hidden="true" />
             <span className='m-0 whitespace-nowrap'>Usluge</span>
@@ -122,21 +122,21 @@ function Navbar() {
         <div className={`overflow-hidden transition-all duration-300 ${isServicesOpen ? 'max-h-[300px] opacity-100 mb-2' : 'max-h-0 opacity-0'}`}>
           <div className="flex flex-col gap-1 pl-12 pr-2">
             <NavLink
-              to="/dj-za-vjencanja"
+              to="/dj-za-vjencanja/"
               onClick={() => { window.scrollTo(0, 0); closeMenu(); }}
               className={({ isActive }) => `px-4 py-3 rounded-xl text-xs font-bold tracking-widest uppercase transition-all ${isActive ? 'text-[color:var(--color-accent-gold)] bg-white/5' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
             >
               Vjenčanja
             </NavLink>
             <NavLink
-              to="/dj-za-proslave"
+              to="/dj-za-proslave/"
               onClick={() => { window.scrollTo(0, 0); closeMenu(); }}
               className={({ isActive }) => `px-4 py-3 rounded-xl text-xs font-bold tracking-widest uppercase transition-all ${isActive ? 'text-[color:var(--color-accent-gold)] bg-white/5' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
             >
               Proslave
             </NavLink>
             <NavLink
-              to="/dj-za-korporativni-dogadaj"
+              to="/dj-za-korporativni-dogadaj/"
               onClick={() => { window.scrollTo(0, 0); closeMenu(); }}
               className={({ isActive }) => `px-4 py-3 rounded-xl text-xs font-bold tracking-widest uppercase transition-all ${isActive ? 'text-[color:var(--color-accent-gold)] bg-white/5' : 'text-gray-400 hover:text-white hover:bg-white/10'}`}
             >
@@ -178,31 +178,29 @@ function Navbar() {
     show: {
       opacity: 1,
       y: 0,
-      scale: 1,
       display: 'block',
       transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 30
+        ease: 'easeOut',
+        duration: 0.3,
       },
     },
     hide: {
       opacity: 0,
       y: -20,
-      scale: 0.95,
       transitionEnd: {
         display: 'none',
       },
       transition: {
-        duration: 0.2
+        ease: 'easeIn',
+        duration: 0.2,
       },
     },
   };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex justify-center ${isAtTop ? 'pt-4 md:pt-6' : 'pt-2 md:pt-4'}`}>
-      <div className={`container transition-all duration-500 ${isAtTop ? 'bg-transparent border-transparent' : 'bg-[#0a0b10]/80 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] border border-white/10 rounded-3xl md:rounded-full'}`}>
-        <div className="px-2 md:px-6">
+      <div className={`w-full max-w-[1400px] px-4 md:px-6 transition-all duration-500`}>
+        <div className={`bg-[#050508]/80 backdrop-blur-2xl border border-white/10 rounded-full px-6 py-2 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-500`}>
           {/* Desktop Navbar */}
           <nav
             aria-label="Glavna navigacija"
@@ -214,11 +212,11 @@ function Navbar() {
             </Link>
             <ul className='flex items-center gap-2 m-0 p-0 list-none'>
               {CustomNavLink('/', 'Početna')}
-              {CustomNavLink('/o-nama', 'O Nama')}
+              {CustomNavLink('/o-nama/', 'O Nama')}
               {CustomDropdownLink()}
-              {CustomNavLink('/galerija', 'Galerija')}
-              {CustomNavLink('/blog', 'Blog')}
-              {CustomNavLink('/kontakt', 'Kontakt')}
+              {CustomNavLink('/galerija/', 'Galerija')}
+              {CustomNavLink('/blog/', 'Blog')}
+              {CustomNavLink('/kontakt/', 'Kontakt')}
             </ul>
           </nav>
 
@@ -247,11 +245,11 @@ function Navbar() {
             >
               <ul className='flex flex-col m-0 p-0 list-none'>
                 {CustomNavLinkMobile('/', 'Početna', faHome)}
-                {CustomNavLinkMobile('/o-nama', 'O Nama', faAddressCard)}
+                {CustomNavLinkMobile('/o-nama/', 'O Nama', faAddressCard)}
                 {CustomDropdownMobile()}
-                {CustomNavLinkMobile('/galerija', 'Galerija', faCamera)}
-                {CustomNavLinkMobile('/blog', 'Blog', faNewspaper)}
-                {CustomNavLinkMobile('/kontakt', 'Kontakt', faAddressBook)}
+                {CustomNavLinkMobile('/galerija/', 'Galerija', faCamera)}
+                {CustomNavLinkMobile('/blog/', 'Blog', faNewspaper)}
+                {CustomNavLinkMobile('/kontakt/', 'Kontakt', faAddressBook)}
               </ul>
             </motion.div>
           </nav>

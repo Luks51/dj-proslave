@@ -1,7 +1,16 @@
-import { defineConfig } from "vite";
+import { defineConfig, createLogger } from "vite";
 import { reactRouter } from "@react-router/dev/vite";
+
+const logger = createLogger();
+const originalWarn = logger.warn;
+logger.warn = (msg, options) => {
+  if (msg.includes("envFile")) return;
+  originalWarn(msg, options);
+};
 
 export default defineConfig({
   base: "/dj-proslave/",
+  customLogger: logger,
   plugins: [reactRouter()],
 });
+

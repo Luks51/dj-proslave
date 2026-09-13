@@ -1,10 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import './EventDJ.scss';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import eventDjImg from '../../assets/images/event-dj.webp'
+import heroEventImg from '../../assets/images/hero-event-dj.jpg';
 import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faBuilding, faUsers, faMusic, faSliders } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faArrowRight, 
+  faBuilding, 
+  faUsers, 
+  faMusic, 
+  faSliders,
+  faStar,
+  faPhone,
+  faLocationDot,
+  faClock
+} from '@fortawesome/free-solid-svg-icons';
 import { getSeoMeta } from '../utils/seo';
 import {
   FloatingEdgeVinyl,
@@ -59,7 +69,7 @@ function EventDJ() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} 
       />
       {/* 1. KORPORATIVNI HERO BANNER */}
-      <section ref={heroRef} className='relative pt-40 pb-20 md:pt-52 md:pb-32 flex flex-col items-center justify-center overflow-hidden border-b border-white/5'>
+      <section ref={heroRef} className='relative pt-36 pb-16 md:pt-48 md:pb-24 flex flex-col items-center justify-center overflow-hidden border-b border-white/10'>
         {/* Dynamic Concert Stage Laser Beams */}
         <StageLaserBeams />
         {/* Pozadinska slika s gradijentom */}
@@ -67,24 +77,174 @@ function EventDJ() {
           style={{ y: heroY, opacity: heroOpacity }}
           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity" style={{ backgroundImage: `url(${eventDjImg})` }}></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/80 via-[#050508]/60 to-[#050508]"></div>
-          <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[color:var(--color-accent-gold)] opacity-[0.05] blur-[150px] rounded-full'></div>
+          <div 
+            className="absolute inset-0 bg-cover bg-center md:bg-[center_30%]" 
+            style={{ backgroundImage: `url(${heroEventImg})` }}
+          />
+          {/* Subtle multi-stop dark gradient overlay for optimal text contrast and mood */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/85 via-[#050508]/75 to-[#050508]" />
+          <div className='absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[color:var(--color-accent-gold)] opacity-[0.09] blur-[160px] rounded-full pointer-events-none' />
         </motion.div>
         
         <div className="container relative z-10 px-4">
-          <div className="max-w-5xl mx-auto">
-            <h4 className='text-[color:var(--color-accent-gold)] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-6 flex items-center gap-4'>
-              <span className="w-12 h-px bg-[color:var(--color-accent-gold)]"></span>
-              Corporate & B2B
-            </h4>
-            <h1 className='text-5xl md:text-7xl lg:text-8xl font-light tracking-wide text-white drop-shadow-2xl mb-8 leading-tight'>
-              Ekskluzivna glazbena <br className="hidden md:block"/>
-              <span className='font-bold text-transparent bg-clip-text bg-gradient-to-r from-[color:var(--color-accent-gold)] to-[#ffdf73]'>kulisa za Vaše događaje.</span>
-            </h1>
-            <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed">
-              Svaki korporativni event zahtijeva savršenu koordinaciju i atmosferu. Mi osiguravamo profesionalni glazbeni pečat koji Vaš brend zaslužuje.
-            </p>
+          <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
+            
+            {/* Top Review Social Proof Pill */}
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/50 border border-white/10 backdrop-blur-md mb-6 shadow-[0_4px_25px_rgba(0,0,0,0.5)]"
+            >
+              <div className="flex text-[color:var(--color-accent-gold)] text-xs gap-0.5">
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+              </div>
+              <span className="text-gray-200 text-xs sm:text-sm font-medium">
+                200+ odrađenih evenata
+              </span>
+            </motion.div>
+
+            {/* Main Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className='text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white drop-shadow-2xl mb-6 leading-[1.1]'
+            >
+              DJ za Evente i Domjenke <br />
+              <span className='italic font-serif font-normal text-transparent bg-clip-text bg-gradient-to-r from-[color:var(--color-accent-gold)] via-[#fff1b8] to-[color:var(--color-accent-gold)]'>
+                Hrvatska & Regija
+              </span>
+            </motion.h1>
+
+            {/* Subtitle Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-gray-300 text-base sm:text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed mb-6"
+            >
+              Ekskluzivna audio-vizualna produkcija i profesionalni DJ nastupi za poslovne domjenke, konferencije, team buildinge i gala večere diljem Hrvatske — s više od 15 godina B2B iskustva.
+            </motion.p>
+
+            {/* Features / Service Tags */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto mb-8"
+            >
+              {[
+                'Lounge & party koncept',
+                'Bežični mikrofoni za govornike',
+                'Arhitektonska rasvjeta',
+                'Tehnička podrška na lokaciji',
+                'R1 B2B računi',
+                'Profinjena atmosfera',
+                'Ozvučenje za konferencije'
+              ].map((tag, idx) => (
+                <span
+                  key={idx}
+                  className="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-gray-300 text-xs sm:text-sm font-medium backdrop-blur-sm hover:border-[color:var(--color-accent-gold)]/40 transition-colors"
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center gap-4 mb-8 w-full sm:w-auto"
+            >
+              <Link
+                to='/kontakt/'
+                onClick={() => window.scrollTo(0, 0)}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[color:var(--color-accent-gold)] via-[#f7e096] to-[color:var(--color-accent-gold)] text-black font-extrabold uppercase tracking-wider text-xs sm:text-sm rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(212,175,55,0.35)]"
+              >
+                Zatražite ponudu
+                <FontAwesomeIcon icon={faArrowRight} className="text-xs" />
+              </Link>
+              <a
+                href="tel:+3850989582676"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-black/40 hover:bg-white/10 border border-white/20 hover:border-[color:var(--color-accent-gold)]/50 text-white font-bold uppercase tracking-wider text-xs sm:text-sm backdrop-blur-md transition-all duration-300"
+              >
+                <FontAwesomeIcon icon={faPhone} className="text-[color:var(--color-accent-gold)]" />
+                Nazovite nas
+              </a>
+            </motion.div>
+
+            {/* Quick Trust Badges */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs sm:text-sm text-gray-300 mb-12"
+            >
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faLocationDot} className="text-[color:var(--color-accent-gold)]" />
+                <span>Cijela Hrvatska</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faStar} className="text-[color:var(--color-accent-gold)]" />
+                <span>200+ poslovnih evenata</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faClock} className="text-[color:var(--color-accent-gold)]" />
+                <span>15+ godina iskustva</span>
+              </div>
+            </motion.div>
+
+            {/* Bottom Stats Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="w-full max-w-4xl grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-10 border-t border-white/10"
+            >
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm flex flex-col items-center">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-1">
+                  200+
+                </span>
+                <span className="text-xs uppercase tracking-wider text-gray-400 font-medium text-center">
+                  Poslovnih evenata
+                </span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm flex flex-col items-center">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-1">
+                  15+
+                </span>
+                <span className="text-xs uppercase tracking-wider text-gray-400 font-medium text-center">
+                  Godina iskustva
+                </span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm flex flex-col items-center">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[color:var(--color-accent-gold)] tracking-tight mb-1">
+                  5.0
+                </span>
+                <span className="text-xs uppercase tracking-wider text-gray-400 font-medium text-center">
+                  Ocjena klijenata
+                </span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm flex flex-col items-center">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-1">
+                  50+
+                </span>
+                <span className="text-xs uppercase tracking-wider text-gray-400 font-medium text-center">
+                  Renomiranih tvrtki
+                </span>
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
@@ -217,7 +377,7 @@ function EventDJ() {
             <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto font-light">
               Zatražite informativnu ponudu za Vaš sljedeći korporativni događaj. Kontaktirajte nas danas i osigurajte vrhunsku atmosferu za Vaše uzvanike.
             </p>
-            <Link to='/kontakt' onClick={() => window.scrollTo(0, 0)} className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-[color:var(--color-accent-gold)] to-[#ffdf73] text-black font-extrabold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(212,175,55,0.3)] rounded-full">
+            <Link to='/kontakt/' onClick={() => window.scrollTo(0, 0)} className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-[color:var(--color-accent-gold)] to-[#ffdf73] text-black font-extrabold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(212,175,55,0.3)] rounded-full">
               Zatražite Ponudu
               <FontAwesomeIcon icon={faArrowRight} />
             </Link>

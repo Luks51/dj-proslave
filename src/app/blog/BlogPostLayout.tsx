@@ -28,7 +28,7 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ title, date, readTime, 
       <div className="container mx-auto px-4 md:px-8 max-w-4xl">
         {/* Back Button */}
         <Link 
-          to="/blog" 
+          to="/blog/" 
           className="inline-flex items-center gap-2 text-gray-400 hover:text-[color:var(--color-accent-gold)] transition-colors mb-8 group"
         >
           <FontAwesomeIcon icon={faArrowLeft} className="group-hover:-translate-x-1 transition-transform" />
@@ -97,7 +97,7 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ title, date, readTime, 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 font-medium">Svidio vam se članak?</p>
           <Link 
-            to="/kontakt" 
+            to="/kontakt/" 
             className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-all font-bold tracking-widest uppercase text-xs"
           >
             Kontaktirajte Nas

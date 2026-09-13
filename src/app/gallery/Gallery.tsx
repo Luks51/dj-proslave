@@ -149,7 +149,10 @@ function Gallery() {
             <div className='mb-12 md:mb-16 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6'>
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[color:var(--color-accent-gold)]/10 border border-[color:var(--color-accent-gold)]/30 text-[color:var(--color-accent-gold)] text-[11px] font-bold tracking-widest uppercase mb-4">
-                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--color-accent-gold)] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[color:var(--color-accent-gold)]"></span>
+                  </span>
                   Uživo s nastupa
                 </div>
                 <h2 className="text-4xl md:text-5xl font-light text-white tracking-wide mb-4">
