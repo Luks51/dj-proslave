@@ -4,11 +4,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import heroEventImg from '../../assets/images/hero-event-dj.jpg';
 import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faArrowRight, 
-  faBuilding, 
-  faUsers, 
-  faMusic, 
+import {
+  faArrowRight,
+  faBuilding,
+  faUsers,
+  faMusic,
   faSliders,
   faStar,
   faPhone,
@@ -58,37 +58,37 @@ function EventDJ() {
     target: heroRef,
     offset: ["start start", "end start"]
   });
-  
+
   const heroY = useTransform(heroProgress, [0, 1], ["0%", "40%"]);
   const heroOpacity = useTransform(heroProgress, [0, 1], [1, 0]);
 
   return (
     <div className="bg-[#050508]/40 backdrop-blur-sm min-h-screen overflow-x-hidden">
-      <script 
-        type="application/ld+json" 
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       {/* 1. KORPORATIVNI HERO BANNER */}
       <section ref={heroRef} className='relative pt-36 pb-16 md:pt-48 md:pb-24 flex flex-col items-center justify-center overflow-hidden border-b border-white/10'>
         {/* Dynamic Concert Stage Laser Beams */}
         <StageLaserBeams />
         {/* Pozadinska slika s gradijentom */}
-        <motion.div 
+        <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
           className="absolute inset-0 z-0"
         >
-          <div 
-            className="absolute inset-0 bg-cover bg-center md:bg-[center_30%]" 
+          <div
+            className="absolute inset-0 bg-cover bg-center md:bg-[center_30%]"
             style={{ backgroundImage: `url(${heroEventImg})` }}
           />
           {/* Subtle multi-stop dark gradient overlay for optimal text contrast and mood */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/85 via-[#050508]/75 to-[#050508]" />
           <div className='absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[color:var(--color-accent-gold)] opacity-[0.09] blur-[160px] rounded-full pointer-events-none' />
         </motion.div>
-        
+
         <div className="container relative z-10 px-4">
           <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
-            
+
             {/* Top Review Social Proof Pill */}
             <motion.div
               initial={{ opacity: 0, y: -15 }}
@@ -130,31 +130,6 @@ function EventDJ() {
             >
               Ekskluzivna audio-vizualna produkcija i profesionalni DJ nastupi za poslovne domjenke, konferencije, team buildinge i gala večere diljem Hrvatske — s više od 15 godina B2B iskustva.
             </motion.p>
-
-            {/* Features / Service Tags */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto mb-8"
-            >
-              {[
-                'Lounge & party koncept',
-                'Bežični mikrofoni za govornike',
-                'Arhitektonska rasvjeta',
-                'Tehnička podrška na lokaciji',
-                'R1 B2B računi',
-                'Profinjena atmosfera',
-                'Ozvučenje za konferencije'
-              ].map((tag, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-gray-300 text-xs sm:text-sm font-medium backdrop-blur-sm hover:border-[color:var(--color-accent-gold)]/40 transition-colors"
-                >
-                  {tag}
-                </span>
-              ))}
-            </motion.div>
 
             {/* CTAs */}
             <motion.div
@@ -262,9 +237,9 @@ function EventDJ() {
         </div>
         <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
+
             {/* Kartica 1 */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -281,7 +256,7 @@ function EventDJ() {
             </motion.div>
 
             {/* Kartica 2 */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -298,7 +273,7 @@ function EventDJ() {
             </motion.div>
 
             {/* Kartica 3 */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -325,10 +300,10 @@ function EventDJ() {
         <StageSpotlightSweep />
         <div className="container relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-16 md:gap-24">
-            
+
             <div className="w-full md:w-1/3 text-center md:text-left">
               <FontAwesomeIcon icon={faBuilding} className="text-[color:var(--color-accent-gold)] text-4xl mb-6 opacity-80" />
-              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Za koje evente <br/><span className="font-semibold text-[color:var(--color-accent-gold)]">sviramo?</span></h2>
+              <h2 className="text-3xl md:text-4xl font-light text-white mb-6">Za koje evente <br /><span className="font-semibold text-[color:var(--color-accent-gold)]">sviramo?</span></h2>
               <p className="text-gray-400 font-light">
                 Neovisno o veličini Vašeg poduzeća ili vrsti okupljanja, prilagođavamo se svakom formatu poslovnog događaja.
               </p>
@@ -352,7 +327,7 @@ function EventDJ() {
                 <h4 className="text-xl text-white font-medium tracking-wide">Team building</h4>
               </div>
             </div>
-            
+
           </div>
         </div>
       </section>
@@ -362,8 +337,8 @@ function EventDJ() {
         {/* Climax Celebration Energy Aura & Pyro Sparkles */}
         <CelebrationPartySparkles />
         <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-[color:var(--color-accent-gold)] opacity-[0.08] blur-[120px] rounded-full z-0 pointer-events-none'></div>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

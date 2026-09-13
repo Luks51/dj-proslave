@@ -4,11 +4,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import heroWeddingImg from '../../assets/images/hero-wedding-dj.jpg';
 import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faArrowRight, 
-  faHeart, 
-  faMusic, 
-  faStar, 
+import {
+  faArrowRight,
+  faHeart,
+  faMusic,
+  faStar,
   faGlassCheers,
   faPhone,
   faLocationDot,
@@ -74,8 +74,8 @@ function WeddingDJ() {
           style={{ y: heroY, opacity: heroOpacity }}
           className="absolute inset-0 z-0"
         >
-          <div 
-            className="absolute inset-0 bg-cover bg-center md:bg-[center_35%]" 
+          <div
+            className="absolute inset-0 bg-cover bg-center md:bg-[center_35%]"
             style={{ backgroundImage: `url(${heroWeddingImg})` }}
           />
           {/* Subtle multi-stop dark gradient overlay for optimal text contrast and mood */}
@@ -97,7 +97,7 @@ function WeddingDJ() {
 
         <div className="container relative z-10 px-4">
           <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
-            
+
             {/* Top Performance Social Proof Pill */}
             <motion.div
               initial={{ opacity: 0, y: -15 }}
@@ -139,32 +139,6 @@ function WeddingDJ() {
             >
               Profesionalni DJ za svadbe i vjenčanja s više od 15 godina iskustva i 500+ svadbi diljem Hrvatske — Zagreb, Dalmacija, Istra i Slavonija.
             </motion.p>
-
-            {/* Features / Service Tags */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto mb-8"
-            >
-              {[
-                'Low fog za prvi ples',
-                'Uplighting rasvjeta',
-                'Violina uživo',
-                'Saksofon',
-                'Sparklers / prskalice',
-                'Photobooth',
-                'LED Dance Floor',
-                'Bežični mikrofoni'
-              ].map((tag, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-gray-300 text-xs sm:text-sm font-medium backdrop-blur-sm hover:border-[color:var(--color-accent-gold)]/40 transition-colors"
-                >
-                  {tag}
-                </span>
-              ))}
-            </motion.div>
 
             {/* CTAs */}
             <motion.div
